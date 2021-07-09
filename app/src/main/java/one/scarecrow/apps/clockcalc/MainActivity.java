@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import android.app.TimePickerDialog;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -19,6 +22,8 @@ import java.util.Date;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
+
+    Spinner activityChooser;
 
     Button fromButton;
     Button toButton;
@@ -44,11 +49,22 @@ public class MainActivity extends AppCompatActivity {
             w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         }
 
+        // Setting spinner
+        activityChooser = findViewById(R.id.activityChooser);
+        ArrayAdapter<String> a = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.activitys));
+        a.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        activityChooser.setAdapter(a);
+
+        /* TODO
+         *  Set up onclick listener on spinner
+         *  Make time calculator
+         */
 
         fromButton = findViewById(R.id.timeButton1);
         toButton = findViewById(R.id.timeButton2);
         results = findViewById(R.id.textViewResult);
         results.setText("");
+
 
         Calendar c = Calendar.getInstance();
         fromHour = c.get(Calendar.HOUR_OF_DAY);

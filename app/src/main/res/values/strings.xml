@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Clock Calc</string>
+
+    <string-array name="activitys">
+        <item>Time Between</item>
+        <item>Time Calculator</item>
+    </string-array>
+
 </resources>
